@@ -112,3 +112,40 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const content = document.querySelector('.articles');
+const article = document.createElement('div');
+const title = document.createElement('h2');
+const paragraph = document.createElement('p');
+const span = document.createElement('span');
+
+// const allArticles = document.getElementsByclasName('div.articles .')
+const paragraphs = document.getElementsByTagName('p');
+
+content.appendChild(article);
+content.appendChild(article.cloneNode(true));
+article.appendChild(title);
+article.appendChild(paragraph);
+article.appendChild(paragraph.cloneNode(true));
+article.appendChild(paragraph.cloneNode(true));
+article.appendChild(paragraph.cloneNode(true));
+article.appendChild(span);
+
+article.classList.add('article');
+paragraph.classList.add('date');
+span.classList.add('expandButton');
+
+title.textContent = data[0]['title'];
+paragraph.textContent = data[0]['date'];
+paragraphs[1].textContent = data[0]['firstParagraph'];
+paragraphs[2].textContent = data[0]['secondParagraph'];
+paragraphs[3].textContent = data[0]['thirdParagraph'];
+
+span.addEventListener('click', (event) => {
+  event.target.classList.toggle('article');
+})
+
+console.log('main section', article);
+console.log('header', title);
+console.log('paragraph', paragraph);
+console.log('expand button', span);
