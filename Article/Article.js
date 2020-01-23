@@ -113,39 +113,46 @@ const data = [
 
 */
 
-const content = document.querySelector('.articles');
-const article = document.createElement('div');
-const title = document.createElement('h2');
-const paragraph = document.createElement('p');
-const span = document.createElement('span');
+const createCard = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
 
-// const allArticles = document.getElementsByclasName('div.articles .')
-const paragraphs = document.getElementsByTagName('p');
+  const article = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const dateParagraph = document.createElement('p')
+  const paragraph1 = document.createElement('p');
+  const paragraph2 = document.createElement('p');
+  const paragraph3 = document.createElement('p');
+  const span = document.createElement('span');
 
-content.appendChild(article);
-content.appendChild(article.cloneNode(true));
-article.appendChild(title);
-article.appendChild(paragraph);
-article.appendChild(paragraph.cloneNode(true));
-article.appendChild(paragraph.cloneNode(true));
-article.appendChild(paragraph.cloneNode(true));
-article.appendChild(span);
+  h2.textContent = title;
+  dateParagraph.textContent = date;
+  paragraph1.textContent = firstParagraph;
+  paragraph2.textContent = secondParagraph;
+  paragraph3.textContent = thirdParagraph;
+  span.textContent = 'toggle'
 
-article.classList.add('article');
-paragraph.classList.add('date');
-span.classList.add('expandButton');
+  article.appendChild(h2);
+  article.appendChild(dateParagraph);
+  article.appendChild(paragraph1);
+  article.appendChild(paragraph2);
+  article.appendChild(paragraph3);
+  article.appendChild(span);
 
-title.textContent = data[0]['title'];
-paragraph.textContent = data[0]['date'];
-paragraphs[1].textContent = data[0]['firstParagraph'];
-paragraphs[2].textContent = data[0]['secondParagraph'];
-paragraphs[3].textContent = data[0]['thirdParagraph'];
+  article.classList.add('article');
+  dateParagraph.classList.add('date');
+  span.classList.add('expandButton');
 
-span.addEventListener('click', (event) => {
-  event.target.classList.toggle('article');
-})
+  span.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  });
 
-console.log('main section', article);
-console.log('header', title);
-console.log('paragraph', paragraph);
-console.log('expand button', span);
+return article;
+};
+
+const parentElement = document.querySelectorAll('div');
+
+data.forEach(element => {
+  const newCard = createCard(element.title, element.date, element.firstParagraph, element.secondParagraph,element.thirdParagraph)
+
+parentElement[1].appendChild(newCard);
+  
+});

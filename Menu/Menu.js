@@ -33,3 +33,46 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+const createMenu = (item1, item2, item3, item4, item5, item6) => {
+
+  const sideMenu = document.createElement('div');
+  const list = document.createElement('ul');
+  const listItem1 = document.createElement('li');
+  const listItem2 = document.createElement('li');
+  const listItem3 = document.createElement('li');
+  const listItem4 = document.createElement('li');
+  const listItem5 = document.createElement('li');
+  const listItem6 = document.createElement('li');
+
+  listItem1.textContent = item1;
+  listItem2.textContent = item2;
+  listItem3.textContent = item3;
+  listItem4.textContent = item4;
+  listItem5.textContent = item5;
+  listItem6.textContent = item6;
+
+  sideMenu.appendChild(list);
+  list.appendChild(listItem1);
+  list.appendChild(listItem2);
+  list.appendChild(listItem3);
+  list.appendChild(listItem4);
+  list.appendChild(listItem5);
+  list.appendChild(listItem6);
+
+  sideMenu.classList.add('menu');
+
+  sideMenu.addEventListener('click', () => {
+    list.classList.toggle('menu--open');
+  });
+
+  return sideMenu;
+};
+
+// const menuParent = document.querySelector('div');
+
+// menuItems.forEach(items => {
+//   const lists = createMenu(items.item1, items.item2, items.item3, items.item4, items.item5, items.item6);
+
+//   menuParent.appendChild(lists);
+// });
