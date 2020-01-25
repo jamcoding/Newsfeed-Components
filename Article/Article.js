@@ -150,9 +150,9 @@ return article;
 
 const parentElement = document.querySelectorAll('div');
 
-data.forEach(element => {
-  const newCard = createCard(element.title, element.date, element.firstParagraph, element.secondParagraph,element.thirdParagraph)
+data.forEach(x => {
+  const newCard = createCard(x.title, x.date, x.firstParagraph, x.secondParagraph, x.thirdParagraph)
 
-parentElement[1].appendChild(newCard);
+  parentElement[2].appendChild(newCard);
   
 });
